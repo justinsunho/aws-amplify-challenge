@@ -1,3 +1,3 @@
-import EmployeeTable from './EmployeeTable'
+import EmployeeTable from './EmployeeTable';
 
-export {EmployeeTable}
+export { EmployeeTable };

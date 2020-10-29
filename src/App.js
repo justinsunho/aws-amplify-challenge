@@ -1,13 +1,13 @@
-import {AddButton} from './components/molecules';
-import {EmployeeTable} from './components/organisms'
+import { AddButton } from './components/molecules';
+import { EmployeeTable } from './components/organisms';
 
 function App() {
-  return (
-    <div>
-        <AddButton />
-        <EmployeeTable />
-    </div>
-  );
+    return (
+        <div>
+            <AddButton />
+            <EmployeeTable />
+        </div>
+    );
 }
 
 export default App;

@@ -3,13 +3,21 @@ import { useMutation, gql } from '@apollo/client';
 import { deleteEmployee, deleteSkill } from './../../../graphql/mutations';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+    icon: {
+        padding: '0 0.5rem',
+    },
+});
 
 const DeleteButton = ({ employeeId }) => {
-    const [deleteE] = useMutation(gql(deleteEmployee));
-    const [deleteS] = useMutation(gql(deleteSkill));
+    const [_deleteEmployee] = useMutation(gql(deleteEmployee));
+    const [_deleteSkill] = useMutation(gql(deleteSkill));
+    const classes = useStyles();
 
     const handleDelete = (employeeId) => {
-        deleteE({
+        _deleteEmployee({
             variables: {
                 input: {
                     id: employeeId,
@@ -24,7 +32,7 @@ const DeleteButton = ({ employeeId }) => {
                 },
             }) => {
                 items.forEach((item) =>
-                    deleteS({
+                    _deleteSkill({
                         variables: {
                             input: {
                                 id: item.id,
@@ -40,6 +48,7 @@ const DeleteButton = ({ employeeId }) => {
         <IconButton
             aria-label="delete"
             onClick={() => handleDelete(employeeId)}
+            className={classes.icon}
         >
             <DeleteIcon />
         </IconButton>

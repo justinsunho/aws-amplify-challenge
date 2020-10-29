@@ -45,7 +45,7 @@ const EmployeeForm = ({
             <DialogContent>
                 <TextField
                     autoFocus
-                    margin="dense"
+                    margin="normal"
                     id="firstName"
                     label="First Name"
                     type="text"
@@ -55,8 +55,8 @@ const EmployeeForm = ({
                 />
                 <TextField
                     autoFocus
-                    margin="dense"
                     id="lastName"
+                    margin="normal"
                     label="Last Name"
                     type="text"
                     fullWidth
@@ -78,8 +78,9 @@ const EmployeeForm = ({
                         <TextField
                             {...params}
                             label="Combo box"
-                            variant="outlined"
                             id="values"
+                            margin="normal"
+                            placeholder="Press Enter to create a new skill"
                         />
                     )}
                 />

@@ -5,8 +5,8 @@ import { EmployeeForm } from '../index.js';
 import { createEmployee, createSkill } from '../../../graphql/mutations';
 
 const AddButton = () => {
-    const [addEmployee] = useMutation(gql(createEmployee));
-    const [addSkill] = useMutation(gql(createSkill));
+    const [_createEmployee] = useMutation(gql(createEmployee));
+    const [_createSkill] = useMutation(gql(createSkill));
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -18,7 +18,7 @@ const AddButton = () => {
     };
 
     const handleSubmit = (firstName, lastName, skills) => {
-        addEmployee({
+        _createEmployee({
             variables: {
                 input: {
                     firstname: firstName,
@@ -32,7 +32,7 @@ const AddButton = () => {
                 },
             }) => {
                 skills.forEach((skill) =>
-                    addSkill({
+                    _createSkill({
                         variables: {
                             input: {
                                 employeeID: id,
@@ -52,7 +52,7 @@ const AddButton = () => {
             <Button
                 color="primary"
                 onClick={handleClickOpen}
-                variant="outlined"
+                variant="contained"
             >
                 Add Employee
             </Button>

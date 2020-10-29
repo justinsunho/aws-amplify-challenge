@@ -9,12 +9,21 @@ import {
     deleteSkill,
 } from '../../../graphql/mutations';
 import { getEmployee } from '../../../graphql/queries';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+    icon: {
+        padding: '0 0.5rem',
+    },
+});
 
 const EditButton = ({ employeeId }) => {
-    const [addSkill] = useMutation(gql(createSkill));
-    const [editEmployee] = useMutation(gql(updateEmployee));
+    const [_createSkill] = useMutation(gql(createSkill));
+    const [_updateEmployee] = useMutation(gql(updateEmployee));
+    const [_deleteSkill] = useMutation(gql(deleteSkill));
     const [open, setOpen] = React.useState(false);
-    const [removeSkill] = useMutation(gql(deleteSkill));
+    const classes = useStyles();
+
     const defaultValues = useQuery(gql(getEmployee), {
         variables: { id: employeeId },
     });
@@ -34,7 +43,7 @@ const EditButton = ({ employeeId }) => {
     };
 
     const handleSubmit = (firstName, lastName, skills) => {
-        editEmployee({
+        _updateEmployee({
             variables: {
                 input: {
                     id: employeeId,
@@ -53,7 +62,7 @@ const EditButton = ({ employeeId }) => {
                 );
 
                 addedSkills.forEach((skill) => {
-                    addSkill({
+                    _createSkill({
                         variables: {
                             input: {
                                 employeeID: id,
@@ -75,7 +84,7 @@ const EditButton = ({ employeeId }) => {
                 );
 
                 removedSkills.forEach((skill) => {
-                    removeSkill({
+                    _deleteSkill({
                         variables: {
                             input: {
                                 id: skill.id,
@@ -91,7 +100,11 @@ const EditButton = ({ employeeId }) => {
 
     return (
         <div>
-            <IconButton aria-label="edit" onClick={handleClickOpen}>
+            <IconButton
+                aria-label="edit"
+                onClick={handleClickOpen}
+                className={classes.icon}
+            >
                 <EditIcon />
             </IconButton>
             <EmployeeForm

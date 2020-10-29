@@ -3,9 +3,29 @@ import { Button } from '@material-ui/core';
 import { gql, useMutation } from '@apollo/client';
 import { EmployeeForm } from '../../molecules';
 import { createEmployee, createSkill } from '../../../graphql/mutations';
+import { listEmployees } from '../../../graphql/queries';
+
+const updateCache = (cache, { data }) => {
+    const existingEmployees = cache.readQuery({
+        query: gql(listEmployees),
+    });
+
+    const newEmployee = data.createEmployee;
+
+    cache.writeQuery({
+        query: gql(listEmployees),
+        data: {
+            listEmployees: {
+                items: [newEmployee, ...existingEmployees.listEmployees.items],
+            },
+        },
+    });
+};
 
 const AddButton = () => {
-    const [_createEmployee] = useMutation(gql(createEmployee));
+    const [_createEmployee] = useMutation(gql(createEmployee), {
+        update: updateCache,
+    });
     const [_createSkill] = useMutation(gql(createSkill));
     const [open, setOpen] = React.useState(false);
 

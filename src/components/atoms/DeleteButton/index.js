@@ -3,6 +3,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import { useMutation, gql } from '@apollo/client';
+import { listEmployees } from '../../../graphql/queries';
 import { deleteEmployee, deleteSkill } from './../../../graphql/mutations';
 
 const useStyles = makeStyles({
@@ -11,8 +12,31 @@ const useStyles = makeStyles({
     },
 });
 
+const updateCache = (cache, { data }) => {
+    const existingEmployees = cache.readQuery({
+        query: gql(listEmployees),
+    });
+
+    const oldEmployee = data.deleteEmployee;
+
+    const newArray = existingEmployees.listEmployees.items.filter(
+        (item) => item.id !== oldEmployee.id
+    );
+
+    cache.writeQuery({
+        query: gql(listEmployees),
+        data: {
+            listEmployees: {
+                items: newArray,
+            },
+        },
+    });
+};
+
 const DeleteButton = ({ employeeId }) => {
-    const [_deleteEmployee] = useMutation(gql(deleteEmployee));
+    const [_deleteEmployee] = useMutation(gql(deleteEmployee), {
+        update: updateCache,
+    });
     const [_deleteSkill] = useMutation(gql(deleteSkill));
     const classes = useStyles();
 
@@ -23,14 +47,11 @@ const DeleteButton = ({ employeeId }) => {
                     id: employeeId,
                 },
             },
-        }).then(
-            ({
-                data: {
-                    deleteEmployee: {
-                        skills: { items },
-                    },
-                },
-            }) => {
+        }).then(({ data: { deleteEmployee } }) => {
+            if (deleteEmployee.skills) {
+                const {
+                    skills: { items },
+                } = deleteEmployee;
                 items.forEach((item) =>
                     _deleteSkill({
                         variables: {
@@ -41,7 +62,7 @@ const DeleteButton = ({ employeeId }) => {
                     })
                 );
             }
-        );
+        });
     };
 
     return (

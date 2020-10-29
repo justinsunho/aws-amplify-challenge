@@ -60,7 +60,7 @@ const EmployeeTable = () => {
                 </TableHead>
                 <TableBody>
                     {items.map((item) => (
-                        <EmployeeRow employee={item} />
+                        <EmployeeRow key={item.id} employee={item} />
                     ))}
                 </TableBody>
             </Table>

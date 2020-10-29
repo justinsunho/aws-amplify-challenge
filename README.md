@@ -7,7 +7,7 @@ Link: http://awsamplifychallenge-20201029145449-hostingbucket-dev.s3-website-us-
 -   Creat-React-App
 -   Apollo
 -   AWS-Amplify
--   Prettier/ ESList
+-   Prettier/ ESLint
 -   Material UI
 
 ### To run locally

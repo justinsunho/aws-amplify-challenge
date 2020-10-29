@@ -1,10 +1,10 @@
-import {AddEntryDialog} from './components/molecules';
+import {AddButton} from './components/molecules';
 import {EmployeeTable} from './components/organisms'
 
 function App() {
   return (
     <div>
-        <AddEntryDialog />
+        <AddButton />
         <EmployeeTable />
     </div>
   );

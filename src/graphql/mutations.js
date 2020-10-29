@@ -81,6 +81,16 @@ export const createSkill = /* GraphQL */ `
     createSkill(input: $input, condition: $condition) {
       id
       employeeID
+      employee {
+        id
+        firstname
+        lastname
+        skills {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       name
       createdAt
       updatedAt
@@ -95,6 +105,16 @@ export const updateSkill = /* GraphQL */ `
     updateSkill(input: $input, condition: $condition) {
       id
       employeeID
+      employee {
+        id
+        firstname
+        lastname
+        skills {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       name
       createdAt
       updatedAt
@@ -109,6 +129,16 @@ export const deleteSkill = /* GraphQL */ `
     deleteSkill(input: $input, condition: $condition) {
       id
       employeeID
+      employee {
+        id
+        firstname
+        lastname
+        skills {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       name
       createdAt
       updatedAt

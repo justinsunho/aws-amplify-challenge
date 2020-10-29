@@ -2,11 +2,12 @@ type Employee @model {
     id: ID!
     firstname: String
     lastname: String
-    skills: [Skill] @connection(keyName: "bySkill", fields: ["id"])
+    skills: [Skill] @connection(keyName: "byEmployee", fields: ["id"])
 }
 
-type Skill @model @key(name: "bySkill", fields: ["employeeID", "name"]) {
+type Skill @model @key(name: "byEmployee", fields: ["employeeID"]) {
     id: ID!
     employeeID: ID!
+    employee: Employee @connection(fields: ["employeeID"])
     name: String
 }

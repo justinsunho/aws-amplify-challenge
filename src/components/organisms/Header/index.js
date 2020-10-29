@@ -1,14 +1,16 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
+import {
+    AppBar,
+    Box,
+    IconButton,
+    Menu,
+    MenuItem,
+    Toolbar,
+    Typography,
+} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
-import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 
 const useStyles = makeStyles({
     toolbar: {

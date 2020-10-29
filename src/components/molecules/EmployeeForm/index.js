@@ -1,10 +1,12 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import {
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    TextField,
+} from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { gql, useQuery } from '@apollo/client';
 import { listSkills } from './../../../graphql/queries';
@@ -77,7 +79,7 @@ const EmployeeForm = ({
                     renderInput={(params) => (
                         <TextField
                             {...params}
-                            label="Combo box"
+                            label="Skills"
                             id="values"
                             margin="normal"
                             placeholder="Press Enter to create a new skill"

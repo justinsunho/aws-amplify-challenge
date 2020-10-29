@@ -1,8 +1,6 @@
 import React from 'react';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
-import Grid from '@material-ui/core/Grid';
-import { DeleteButton, EditButton } from '../../molecules';
+import { Grid, TableCell, TableRow } from '@material-ui/core';
+import { DeleteButton, EditButton } from '../../atoms';
 
 const EmployeeRow = ({ employee }) => {
     return (

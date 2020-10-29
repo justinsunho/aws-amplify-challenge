@@ -2,25 +2,25 @@ import React from 'react';
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import { gql, useMutation, useQuery } from '@apollo/client';
-import { EmployeeForm } from '../index.js';
+import { makeStyles } from '@material-ui/core/styles';
+import { EmployeeForm } from '../../molecules';
 import {
-    updateEmployee,
     createSkill,
     deleteSkill,
+    updateEmployee,
 } from '../../../graphql/mutations';
 import { getEmployee } from '../../../graphql/queries';
-import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     icon: {
-        padding: '0 0.5rem',
+        padding: '0.5rem',
     },
 });
 
 const EditButton = ({ employeeId }) => {
     const [_createSkill] = useMutation(gql(createSkill));
-    const [_updateEmployee] = useMutation(gql(updateEmployee));
     const [_deleteSkill] = useMutation(gql(deleteSkill));
+    const [_updateEmployee] = useMutation(gql(updateEmployee));
     const [open, setOpen] = React.useState(false);
     const classes = useStyles();
 

@@ -1,12 +1,8 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import EmailIcon from '@material-ui/icons/Email';
-import List from '@material-ui/core/List';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import { Box, Container, List, ListItemIcon } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import { ListLink } from '../../atoms';
 
 const useStyles = makeStyles({

@@ -1,17 +1,20 @@
 import React from 'react';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import TableContainer from '@material-ui/core/TableContainer';
+import {
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Toolbar,
+    Typography,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import TableHead from '@material-ui/core/TableHead';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import { gql, useQuery } from '@apollo/client';
 import { listEmployees } from '../../../graphql/queries';
-import { EmployeeRow, AddButton } from '../../molecules';
-import Paper from '@material-ui/core/Paper';
+import { AddButton } from '../../atoms';
+import { EmployeeRow } from '../../molecules';
 
 const useStyles = makeStyles({
     table: {},

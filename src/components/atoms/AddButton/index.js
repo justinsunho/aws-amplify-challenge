@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import { Button } from '@material-ui/core';
 import { gql, useMutation } from '@apollo/client';
-import { EmployeeForm } from '../index.js';
+import { EmployeeForm } from '../../molecules';
 import { createEmployee, createSkill } from '../../../graphql/mutations';
 
 const AddButton = () => {

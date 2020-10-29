@@ -1,5 +1,5 @@
-import { EmployeeTable } from './components/organisms';
 import Container from '@material-ui/core/Container';
+import { EmployeeTable } from './components/organisms';
 import { Header, Footer } from './components/organisms';
 import { makeStyles } from '@material-ui/core/styles';
 

@@ -3,10 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import gql from 'graphql-tag';
-import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
+import { AUTH_TYPE } from 'aws-appsync';
 import aws_config from './aws-exports';
-import { listEmployees } from './graphql/queries';
 import { createAuthLink } from 'aws-appsync-auth-link';
 import { createSubscriptionHandshakeLink } from 'aws-appsync-subscription-link';
 import {
